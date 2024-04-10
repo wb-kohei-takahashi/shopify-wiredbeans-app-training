@@ -60,5 +60,8 @@
   "trustedDependencies": [
     "@shopify/plugin-cloudflare"
   ],
-  "author": "Kohei.Takahashi"
+  "author": "Kohei.Takahashi",
+  "engines": {
+    "node": "=21.7.2"
+  }
 }
