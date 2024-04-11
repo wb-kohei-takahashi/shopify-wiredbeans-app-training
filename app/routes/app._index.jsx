@@ -1,8 +1,5 @@
 import {
-  Card,
-  Layout,
-  Page,
-  Text
+  Page
 } from "@shopify/polaris";
 
 import UiTitleBar from "../components/UiTitleBar"

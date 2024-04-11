@@ -2,7 +2,6 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import {
     Card,
-    EmptyState,
     Layout,
     Page,
     IndexTable,
@@ -14,6 +13,7 @@ import { getProducts } from "../models/Products.server";
 import { ImageIcon } from "@shopify/polaris-icons";
 
 import UiTitleButtons from "../components/UiTitleBar"
+import ProductEmptyState from "../components/ProductEmptyState"
 
 export async function loader({ request }) {
     const products = await getProducts(request, 'UPDATED_AT')
@@ -21,18 +21,6 @@ export async function loader({ request }) {
         products
     });
 }
-
-const EmptyProductState = ({ onAction }) => (
-    <EmptyState
-        heading="Create product"
-        action={{
-            content: "Create product",
-            onAction,
-        }}
-        image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
-    >
-    </EmptyState>
-);
 
 const ProductTable = ({ products }) => (
     <IndexTable
@@ -96,7 +84,7 @@ export default function IndexTableSample() {
                 <Layout.Section>
                     <Card padding="0">
                         {products.length === 0 ? (
-                            <EmptyProductState onAction={() => { }} />
+                            <ProductEmptyState onAction={() => { }} />
                         ) : (
                             <ProductTable products={products} />
                         )}
